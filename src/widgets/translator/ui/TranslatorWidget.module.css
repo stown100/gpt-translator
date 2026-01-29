@@ -1,0 +1,46 @@
+.translator {
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.languageSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.translationSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .translationSection {
+    grid-template-columns: 1fr;
+  }
+
+  .languageSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .container {
+    padding: 16px;
+  }
+}
