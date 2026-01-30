@@ -1,0 +1,23 @@
+# robots.txt для GPT Translator
+# https://your-domain.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Запрет индексации служебных путей (если появятся)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Sitemap (раскомментируйте и укажите URL после публикации сайта)
+# Sitemap: https://your-domain.com/sitemap.xml
+
+# Опционально: правила для отдельных ботов
+# User-agent: Yandex
+# Allow: /
+
+# User-agent: Googlebot
+# Allow: /
+
+# User-agent: Bingbot
+# Allow: /
