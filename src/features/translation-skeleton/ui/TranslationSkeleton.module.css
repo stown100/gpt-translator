@@ -1,0 +1,26 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 0 0 8px 8px;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.75) 35%,
+    rgba(241, 243, 244, 0.9) 50%,
+    rgba(255, 255, 255, 0.75) 65%,
+    rgba(255, 255, 255, 0.75) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

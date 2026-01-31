@@ -6,10 +6,12 @@ interface TranslatorState {
   targetLanguage: string;
   sourceText: string;
   translatedText: string;
+  isTranslating: boolean;
   setSourceLanguage: (lang: string) => void;
   setTargetLanguage: (lang: string) => void;
   setSourceText: (text: string) => void;
   setTranslatedText: (text: string) => void;
+  setTranslating: (value: boolean) => void;
   swapLanguages: () => void;
   clearText: () => void;
 }
@@ -28,10 +30,12 @@ export const useTranslatorStore = create<TranslatorState>()(
       ...defaultState,
       sourceText: '',
       translatedText: '',
+      isTranslating: false,
       setSourceLanguage: (lang) => set({ sourceLanguage: lang }),
       setTargetLanguage: (lang) => set({ targetLanguage: lang }),
       setSourceText: (text) => set({ sourceText: text }),
       setTranslatedText: (text) => set({ translatedText: text }),
+      setTranslating: (value) => set({ isTranslating: value }),
       swapLanguages: () =>
         set((state) => {
           const newSourceLang = state.targetLanguage === 'auto' ? 'en' : state.targetLanguage;
