@@ -1,5 +1,5 @@
 # robots.txt для GPT Translator
-# https://your-domain.com/robots.txt
+# https://gpt-translator.me/robots.txt
 
 User-agent: *
 Allow: /
@@ -10,7 +10,7 @@ Disallow: /_next/
 Disallow: /admin/
 
 # Sitemap (раскомментируйте и укажите URL после публикации сайта)
-# Sitemap: https://your-domain.com/sitemap.xml
+# Sitemap: https://gpt-translator.me/sitemap.xml
 
 # Опционально: правила для отдельных ботов
 # User-agent: Yandex
