@@ -78,3 +78,10 @@
     opacity: 0.3;
   }
 }
+
+@media (max-width: 768px) {
+  .voiceButton {
+    width: 23px;
+    height: 23px;
+  }
+}

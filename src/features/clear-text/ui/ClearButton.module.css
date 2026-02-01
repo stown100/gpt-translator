@@ -17,3 +17,10 @@
 .clearButton:active {
   background-color: #e8f0fe;
 }
+
+@media (max-width: 768px) {
+  .clearButton {
+    width: 23px;
+    height: 23px;
+  }
+}
