@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { LANGUAGES } from '@shared/config/languages';
 
 interface TranslatorState {
   sourceLanguage: string;
@@ -18,9 +19,49 @@ interface TranslatorState {
 
 const STORAGE_KEY = 'translator-storage';
 
-// Значения по умолчанию
+// Маппинг navigator.language (BCP 47) на коды наших языков
+const BROWSER_LANG_TO_CODE: Record<string, string> = {
+  'zh-TW': 'zh-TW',
+  'zh-HK': 'zh-TW',
+  'zh-Hant': 'zh-TW',
+  'zh-CN': 'zh',
+  'zh-SG': 'zh',
+  'zh-Hans': 'zh',
+  'pt-BR': 'pt',
+  'pt-PT': 'pt',
+  'nb': 'no',
+  'nn': 'no',
+};
+
+const supportedCodes = new Set(LANGUAGES.filter((l) => l.code !== 'auto').map((l) => l.code));
+
+function getBrowserLanguageCode(): string | null {
+  if (typeof navigator === 'undefined') return null;
+  const browserLang = navigator.language || (navigator as Navigator & { userLanguage?: string }).userLanguage;
+  if (!browserLang) return null;
+
+  if (BROWSER_LANG_TO_CODE[browserLang]) return BROWSER_LANG_TO_CODE[browserLang];
+  if (supportedCodes.has(browserLang)) return browserLang;
+
+  const [primary] = browserLang.split('-');
+  return supportedCodes.has(primary) ? primary : null;
+}
+
+function isStorageEmpty(): boolean {
+  if (typeof window === 'undefined') return true;
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return true;
+    const parsed = JSON.parse(stored);
+    return !parsed?.state;
+  } catch {
+    return true;
+  }
+}
+
+// Значения по умолчанию: при пустом localStorage — sourceLanguage из языка браузера
 const defaultState = {
-  sourceLanguage: 'auto' as const,
+  sourceLanguage: (isStorageEmpty() ? getBrowserLanguageCode() || 'auto' : 'auto') as string,
   targetLanguage: 'en' as const,
 };
 
