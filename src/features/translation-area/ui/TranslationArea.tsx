@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useTranslatorStore } from '@shared/lib/store/useTranslatorStore';
 import { concatenateText } from '@shared/lib/utils/concatenateText';
 import { translateWithChatGPT } from '@shared/lib/api/translateApi';
+import { trackTranslation, trackClear } from '@shared/lib/analytics';
 import { ClearButton } from '@features/clear-text';
 import { CopyButton } from '@features/copy-text';
 import { VoiceInputButton } from '@features/voice-input';
@@ -74,6 +75,7 @@ export const TranslationArea = ({ type }: TranslationAreaProps) => {
       } else {
         setTranslatedText(result.translatedText);
         setTranslateError(null);
+        trackTranslation(sourceLanguage, targetLanguage);
       }
     }, TRANSLATE_DEBOUNCE_MS);
 
@@ -97,6 +99,7 @@ export const TranslationArea = ({ type }: TranslationAreaProps) => {
       <div className={styles.toolbar}>
         {type === 'source' && value && (
           <ClearButton onClick={() => {
+            trackClear();
             const { clearText } = useTranslatorStore.getState();
             clearText();
           }} />

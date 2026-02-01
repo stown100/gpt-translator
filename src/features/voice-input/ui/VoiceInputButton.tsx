@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useSpeechRecognition } from '@shared/lib/hooks/useSpeechRecognition';
+import { trackVoiceInput } from '@shared/lib/analytics';
 import { languageToSpeechCode } from '@shared/lib/utils/languageToSpeechCode';
 import { concatenateText } from '@shared/lib/utils/concatenateText';
 import styles from './VoiceInputButton.module.css';
@@ -82,6 +83,7 @@ export const VoiceInputButton = ({
       alert('Speech recognition is not supported in your browser. Please use Chrome, Edge, or Safari.');
       return;
     }
+    if (!isListening) trackVoiceInput();
     toggleListening();
   };
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { trackCopy } from '@shared/lib/analytics';
 import styles from './CopyButton.module.css';
 
 interface CopyButtonProps {
@@ -11,6 +12,7 @@ export const CopyButton = ({ text }: CopyButtonProps) => {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(text);
+      trackCopy();
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err: unknown) {

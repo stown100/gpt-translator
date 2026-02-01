@@ -2,6 +2,7 @@ import { LanguageSelector } from '@features/language-selector';
 import { TranslationArea } from '@features/translation-area';
 import { SwapButton } from '@features/swap-languages';
 import { useTranslatorStore } from '@shared/lib/store/useTranslatorStore';
+import { trackSwap } from '@shared/lib/analytics';
 import styles from './TranslatorWidget.module.css';
 
 export const TranslatorWidget = () => {
@@ -22,7 +23,7 @@ export const TranslatorWidget = () => {
             onChange={setSourceLanguage}
           />
 
-          <SwapButton onClick={swapLanguages} />
+          <SwapButton onClick={() => { trackSwap(); swapLanguages(); }} />
 
           <LanguageSelector
             value={targetLanguage}
