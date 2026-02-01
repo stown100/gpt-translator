@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-33DXYMNW25"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-33DXYMNW25");
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        (k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a);
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js?id=106567961",
+        "ym"
+      );
+
+      ym(106567961, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce: true,
+        trackLinks: true,
+      });
+    </script>
+    <noscript
+      ><div>
+        <img
+          src="https://mc.yandex.ru/watch/106567961"
+          style="position: absolute; left: -9999px"
+          alt=""
+        /></div
+    ></noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Primary Meta Tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta
       name="title"
       content="GPT Translator — Бесплатный онлайн-переводчик текста и голоса"
@@ -45,7 +111,10 @@
       property="og:description"
       content="Переводите текст и голос на 80+ языков бесплатно. Поддержка русского, английского и многих других языков."
     />
-    <meta property="og:image" content="https://gpt-translator.me/og-image.png" />
+    <meta
+      property="og:image"
+      content="https://gpt-translator.me/og-image.png"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -67,7 +136,10 @@
       name="twitter:description"
       content="Translate text and voice in 80+ languages for free. Turkish, English, Spanish, Chinese, Russian, Ukrainian and more."
     />
-    <meta name="twitter:image" content="https://gpt-translator.me/og-image.png" />
+    <meta
+      name="twitter:image"
+      content="https://gpt-translator.me/og-image.png"
+    />
     <meta
       name="twitter:image:alt"
       content="GPT Translator — online text and voice translator"
