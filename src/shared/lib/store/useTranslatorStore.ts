@@ -2,12 +2,16 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { LANGUAGES } from '@shared/config/languages';
 
+export type TranslationMode = 'text' | 'images' | 'document' | 'song';
+
 interface TranslatorState {
+  translationMode: TranslationMode;
   sourceLanguage: string;
   targetLanguage: string;
   sourceText: string;
   translatedText: string;
   isTranslating: boolean;
+  setTranslationMode: (mode: TranslationMode) => void;
   setSourceLanguage: (lang: string) => void;
   setTargetLanguage: (lang: string) => void;
   setSourceText: (text: string) => void;
@@ -69,9 +73,11 @@ export const useTranslatorStore = create<TranslatorState>()(
   persist(
     (set) => ({
       ...defaultState,
+      translationMode: 'text',
       sourceText: '',
       translatedText: '',
       isTranslating: false,
+      setTranslationMode: (mode) => set({ translationMode: mode }),
       setSourceLanguage: (lang) => set({ sourceLanguage: lang }),
       setTargetLanguage: (lang) => set({ targetLanguage: lang }),
       setSourceText: (text) => set({ sourceText: text }),
@@ -96,6 +102,7 @@ export const useTranslatorStore = create<TranslatorState>()(
       storage: createJSONStorage(() => localStorage),
       // Сохраняем только языки, текст не сохраняем
       partialize: (state) => ({
+        translationMode: state.translationMode,
         sourceLanguage: state.sourceLanguage,
         targetLanguage: state.targetLanguage,
       }),

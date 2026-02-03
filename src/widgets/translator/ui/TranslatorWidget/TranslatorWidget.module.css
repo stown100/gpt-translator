@@ -5,37 +5,27 @@
   flex-direction: column;
 }
 
+.tabsWrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 .container {
   flex: 1;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 24px;
+  padding: 16px 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.languageSection {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.translationSection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  flex: 1;
-}
-
 @media (max-width: 768px) {
-  .languageSection {
-    order: 1;
-  }
-  .translationSection {
-    grid-template-columns: 1fr;
+  .tabsWrapper {
+    padding: 0 16px;
   }
 
   .container {

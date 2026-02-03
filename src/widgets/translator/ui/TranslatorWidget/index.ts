@@ -1,0 +1,1 @@
+export { TranslatorWidget } from './TranslatorWidget';

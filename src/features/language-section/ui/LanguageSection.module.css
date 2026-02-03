@@ -1,0 +1,12 @@
+.languageSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .languageSection {
+    order: 1;
+  }
+}

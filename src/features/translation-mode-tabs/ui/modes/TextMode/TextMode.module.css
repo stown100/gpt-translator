@@ -1,0 +1,19 @@
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.translationSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .translationSection {
+    grid-template-columns: 1fr;
+  }
+}
